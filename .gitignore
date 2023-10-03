@@ -1,0 +1,10 @@
+*.so
+*.pcm
+*.rootmap
+*.root
+/build/
+/lib/
+/bin/
+/test/
+*.DS_Store
+__pycache__/
