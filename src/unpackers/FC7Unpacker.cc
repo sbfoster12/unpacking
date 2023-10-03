@@ -4,7 +4,7 @@ using namespace unpackers;
 
 FC7Unpacker::FC7Unpacker() 
     : PayloadUnpacker()
-    , FC7HeaderPtrCol_(std::make_shared<std::vector<std::shared_ptr<dataProducts::DataProduct>>>())
+    , FC7HeaderPtrCol_(std::make_shared<dataProducts::DataProductPtrCollection>())
     , FC7HeaderParser_(std::make_unique<parsers::FC7HeaderParser>())
 {
     utils::LoggerHolder::getInstance()->InfoLogger << "We are constructing the FC7 unpacker." << std::endl;
@@ -39,7 +39,7 @@ void FC7Unpacker::Unpack(const uint64_t* words, unsigned int& wordNum) {
     wordNum+=data_length;
 };
 
-void FC7Unpacker::RegisterDataProducts(std::map<std::string,std::shared_ptr<std::vector<std::shared_ptr<dataProducts::DataProduct>>>>& basePtrCol) {
+void FC7Unpacker::RegisterDataProducts(std::map<std::string,std::shared_ptr<dataProducts::DataProductPtrCollection>>& basePtrCol) {
     
     std::string FC7HeaderLabel="FC7HeaderCollection";
 

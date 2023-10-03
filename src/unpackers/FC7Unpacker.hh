@@ -22,10 +22,10 @@ namespace unpackers {
 
         void Unpack(const uint64_t* words, unsigned int& wordNum) override;
 
-        void RegisterDataProducts(std::map<std::string, std::shared_ptr<std::vector<std::shared_ptr<dataProducts::DataProduct>>>>& basePtrCol) override;
+        void RegisterDataProducts(std::map<std::string,std::shared_ptr<dataProducts::DataProductPtrCollection>>& basePtrCol) override;
 
         //Collections
-        std::shared_ptr<std::vector<std::shared_ptr<dataProducts::DataProduct>>> FC7HeaderPtrCol_;
+        std::shared_ptr<dataProducts::DataProductPtrCollection> FC7HeaderPtrCol_;
 
     private:
         const std::string className_ = "FC7Unpacker";

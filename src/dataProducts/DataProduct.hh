@@ -5,6 +5,7 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <memory>
 
 #include <TObject.h>
 
@@ -24,6 +25,7 @@ namespace dataProducts {
     };
 
     typedef std::vector<DataProduct> DataProductCollection;
+    typedef std::vector<std::shared_ptr<DataProduct>> DataProductPtrCollection;
 
 }
 

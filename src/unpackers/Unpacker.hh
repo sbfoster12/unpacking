@@ -23,7 +23,7 @@ namespace unpackers {
         //Destructor
         virtual ~Unpacker();
 
-        std::map<std::string, std::shared_ptr<std::vector<std::shared_ptr<dataProducts::DataProduct>>>>
+        std::map<std::string,std::shared_ptr<dataProducts::DataProductPtrCollection>>
         GetCollections();
 
         // This template function returns a std::vector<std::shared_ptr<T>>
@@ -62,7 +62,7 @@ namespace unpackers {
     protected:
 
         //collections
-        std::map<std::string, std::shared_ptr<std::vector<std::shared_ptr<dataProducts::DataProduct>>>> basePtrCol;
+        std::map<std::string,std::shared_ptr<dataProducts::DataProductPtrCollection>> basePtrCol;
 
 
     };

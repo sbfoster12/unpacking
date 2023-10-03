@@ -4,8 +4,8 @@ using namespace unpackers;
 
 WFD5Unpacker::WFD5Unpacker() 
     : PayloadUnpacker()
-    , WFD5HeaderPtrCol_(std::make_shared<std::vector<std::shared_ptr<dataProducts::DataProduct>>>())
-    , waveformPtrCol_(std::make_shared<std::vector<std::shared_ptr<dataProducts::DataProduct>>>())
+    , WFD5HeaderPtrCol_(std::make_shared<dataProducts::DataProductPtrCollection>())
+    , waveformPtrCol_(std::make_shared<dataProducts::DataProductPtrCollection>())
     , WFD5HeaderParser_(std::make_unique<parsers::WFD5HeaderParser>())
     , ChannelHeaderParser_(std::make_unique<parsers::ChannelHeaderParser>())
     , WaveformHeaderParser_(std::make_unique<parsers::WaveformHeaderParser>())
@@ -138,7 +138,7 @@ void WFD5Unpacker::Unpack(const uint64_t* words, unsigned int& wordNum) {
     }
 };
 
-void WFD5Unpacker::RegisterDataProducts(std::map<std::string, std::shared_ptr<std::vector<std::shared_ptr<dataProducts::DataProduct>>>>& basePtrCol) {
+void WFD5Unpacker::RegisterDataProducts(std::map<std::string,std::shared_ptr<dataProducts::DataProductPtrCollection>>& basePtrCol) {
     std::cout << "here" << std::endl;
     std::string WFD5HeaderLabel="WFD5HeaderCollection";
     std::string WaveformLabel="WaveformCollection";
@@ -163,6 +163,5 @@ void WFD5Unpacker::RegisterDataProducts(std::map<std::string, std::shared_ptr<st
         exit(1);
     } else {
         basePtrCol[WaveformLabel] = waveformPtrCol_;
-        std::cout << basePtrCol[WaveformLabel] << std::endl;
     }
 }

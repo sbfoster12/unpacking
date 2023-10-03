@@ -27,7 +27,7 @@ namespace unpackers {
 
         virtual void Unpack(const uint64_t* words, unsigned int& wordNum) = 0;
 
-        virtual void RegisterDataProducts(std::map<std::string, std::shared_ptr<std::vector<std::shared_ptr<dataProducts::DataProduct>>>>& basePtrCol) = 0;
+        virtual void RegisterDataProducts(std::map<std::string,std::shared_ptr<dataProducts::DataProductPtrCollection>>& basePtrCol) = 0;
 
         void SetCrateNum(int crateNum);
         void SetEventNum(int eventNum);

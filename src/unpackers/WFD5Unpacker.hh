@@ -27,11 +27,11 @@ namespace unpackers {
 
         void Unpack(const uint64_t* words, unsigned int& wordNum) override;
 
-        void RegisterDataProducts(std::map<std::string, std::shared_ptr<std::vector<std::shared_ptr<dataProducts::DataProduct>>>>& basePtrCol) override;
+        void RegisterDataProducts(std::map<std::string,std::shared_ptr<dataProducts::DataProductPtrCollection>>& basePtrCol) override;
 
         //Collections
-        std::shared_ptr<std::vector<std::shared_ptr<dataProducts::DataProduct>>> WFD5HeaderPtrCol_;
-        std::shared_ptr<std::vector<std::shared_ptr<dataProducts::DataProduct>>> waveformPtrCol_;
+        std::shared_ptr<dataProducts::DataProductPtrCollection> WFD5HeaderPtrCol_;
+        std::shared_ptr<dataProducts::DataProductPtrCollection> waveformPtrCol_;
 
     private:
         const std::string className_ = "WFD5Unpacker";

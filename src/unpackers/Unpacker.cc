@@ -8,7 +8,7 @@ Unpacker::Unpacker()
 
 Unpacker::~Unpacker() {}
 
-std::map<std::string,std::shared_ptr<std::vector<std::shared_ptr<dataProducts::DataProduct>>>>
+std::map<std::string,std::shared_ptr<dataProducts::DataProductPtrCollection>>
 Unpacker::GetCollections() {
     return basePtrCol;
 }
