@@ -36,14 +36,9 @@ void WFD5Unpacker::Unpack(const uint64_t* words, unsigned int& wordNum) {
 
     //Get the data length
     int data_length = WFD5HeaderParser_->DataLength();
-    //std::cout << "data_length: " << data_length << std::endl;
 
     //Get the number of enabled channels
     unsigned int enabled_channels = WFD5HeaderParser_->NumEnabledChannels();
-    //std::cout << "    Enabled channels: " << enabled_channels << std::endl;
-
-    //Get the ADC data endianness
-    int endianness = WFD5HeaderParser_->Endianness();
 
     //Is the event empty?
     if (WFD5HeaderParser_->EmptyEvent()) {
@@ -54,7 +49,12 @@ void WFD5Unpacker::Unpack(const uint64_t* words, unsigned int& wordNum) {
     }
 
     //Parse and create the data product
-    auto WFD5HeaderDataProduct = WFD5HeaderParser_->CreateDataProduct(); 
+    WFD5HeaderPtrCol_->push_back(WFD5HeaderParser_->NewDataProduct(crateNum_));
+
+    WFD5HeaderParser_->Print();
+
+    //Clear data from parser
+    WFD5HeaderParser_->Clear();
 
     /*
         Now we loop over the channels
@@ -139,7 +139,6 @@ void WFD5Unpacker::Unpack(const uint64_t* words, unsigned int& wordNum) {
 };
 
 void WFD5Unpacker::RegisterDataProducts(std::map<std::string,std::shared_ptr<dataProducts::DataProductPtrCollection>>& basePtrCol) {
-    std::cout << "here" << std::endl;
     std::string WFD5HeaderLabel="WFD5HeaderCollection";
     std::string WaveformLabel="WaveformCollection";
 
