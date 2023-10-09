@@ -61,9 +61,9 @@ namespace utils {
         private:
             // Private constructor to prevent direct instantiation
             LoggerHolder()
-                : verbosity_(0),
-                InfoLogger("Info",1),
-                DebugLogger("Debug",2)
+                : InfoLogger("Info",1),
+                DebugLogger("Debug",2),
+                verbosity_(0)
                 {}
 
             // Private static instance
