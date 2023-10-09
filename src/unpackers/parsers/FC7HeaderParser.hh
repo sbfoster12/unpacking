@@ -43,6 +43,9 @@ namespace parsers {
         uint32_t            BoardType() const ;
         std::string         BoardTypeString() const ;
 
+        //Print method
+        void Print() override;
+
     private:
         const std::string className_ = "FC7HeaderParser";
 

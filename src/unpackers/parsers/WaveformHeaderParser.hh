@@ -28,6 +28,9 @@ namespace parsers {
         //Get methods
         uint32_t WaveformLength() const ;
 
+        //Print method
+        void Print() override;
+
     private:
         const std::string className_ = "WaveformHeaderParser";
 

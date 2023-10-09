@@ -18,9 +18,38 @@ WFD5Header::WFD5Header()
     patchRevision(0)
 {}
 
+WFD5Header::WFD5Header(
+    unsigned int crateNumArg
+    ,unsigned int amcNumArg
+    ,unsigned int triggerNumArg
+    ,unsigned long clockCounterArg
+    ,unsigned int fillTypeArg
+    ,unsigned int boardTypeArg
+    ,unsigned int boardIDArg
+    ,unsigned char xadcAlarmsArg
+    ,bool emptyEventArg
+    ,unsigned int majorRevisionArg
+    ,unsigned int minorRevisionArg
+    ,unsigned int patchRevisionArg
+    )
+    : DataProduct(),
+    crateNum(crateNumArg),
+    amcNum(amcNumArg),
+    triggerNum(triggerNumArg),
+    clockCounter(clockCounterArg),
+    fillType(fillTypeArg),
+    boardType(boardTypeArg),
+    boardID(boardIDArg),
+    xadcAlarms(xadcAlarmsArg),
+    emptyEvent(emptyEventArg),
+    majorRevision(majorRevisionArg),
+    minorRevision(minorRevisionArg),
+    patchRevision(patchRevisionArg)
+{}
+
 WFD5Header::~WFD5Header() {};
 
-void WFD5Header::Print() const {
+void WFD5Header::PrintMembers() const {
     std::ostringstream oss;
     oss << std::endl;
     oss << "WFD5Header: " << crateNum << std::endl;

@@ -22,3 +22,6 @@ dataProducts::ChannelHeader ChannelHeaderParser::CreateDataProduct() {
 uint32_t ChannelHeaderParser::WaveformCount() const { return (GetWord(WaveformCount_WORD) >> WaveformCount_BIT) & WaveformCount_MASK;}
 
 uint32_t ChannelHeaderParser::ChannelTag() const { return (GetWord(ChannelTag_WORD) >> ChannelTag_BIT) & ChannelTag_MASK; }
+
+void ChannelHeaderParser::Print() {
+}

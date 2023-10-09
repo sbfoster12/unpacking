@@ -27,6 +27,9 @@ namespace parsers {
 
         uint16_t ADCData(int wordNum, int sampleNum);
 
+        //Print method
+        void Print() override;
+
     private:
         std::string className_ = "WaveformParser";
 

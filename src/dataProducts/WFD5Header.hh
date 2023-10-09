@@ -10,6 +10,21 @@ namespace dataProducts {
         public:
             WFD5Header();
 
+            WFD5Header(
+                unsigned int crateNumArg
+                ,unsigned int amcNum
+                ,unsigned int triggerNum
+                ,unsigned long clockCounter
+                ,unsigned int fillType
+                ,unsigned int boardType
+                ,unsigned int boardID
+                ,unsigned char xadcAlarms
+                ,bool emptyEvent
+                ,unsigned int majorRevision
+                ,unsigned int minorRevision
+                ,unsigned int patchRevision
+            );
+
             //Destructor
             ~WFD5Header();
 
@@ -45,7 +60,7 @@ namespace dataProducts {
             unsigned int minorRevision;
             unsigned int patchRevision;
 
-            void Print() const override;
+            void PrintMembers() const override;
 
             ClassDefOverride(WFD5Header,1)
 

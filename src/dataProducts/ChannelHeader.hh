@@ -45,7 +45,7 @@ namespace dataProducts {
             // whether data integrity check passed
             bool passedIntegrityCheck;
 
-            void Print() const override;
+            void PrintMembers() const override;
 
             ClassDefOverride(ChannelHeader,1)
     };

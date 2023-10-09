@@ -7,9 +7,7 @@ Parser::Parser()
 
 Parser::~Parser() {}
 
-void Parser::SetWords(std::vector<uint64_t> words) {
-    words_=words; 
-}
+void Parser::SetWords(std::vector<uint64_t>& words) { words_=std::move(words); }
 
 uint64_t Parser::GetSize() const { 
     uint64_t bankSize = words_.size();
@@ -25,3 +23,5 @@ uint64_t Parser::GetWord(size_t iWord) const {
     }
     return words_.at(iWord);
 }
+
+void Parser::Clear() { words_.clear(); words_.shrink_to_fit(); }

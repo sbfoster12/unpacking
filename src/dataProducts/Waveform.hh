@@ -34,7 +34,7 @@ namespace dataProducts {
             // ADC count of each sample
             std::vector<short> trace;
 
-            void Print() const override;
+            void PrintMembers() const override;
 
             ClassDefOverride(Waveform,1)
 

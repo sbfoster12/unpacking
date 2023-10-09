@@ -30,7 +30,7 @@ std::vector<short> WaveformParser::ADCData() {
         //cast to a short
         short* shortWords = (short*)&words;
         //insert into vector
-        size_t wordsSize = sizeof(shortWords)/sizeof(short);
+        size_t wordsSize = sizeof(words)/sizeof(short);
         trace.insert(trace.end(),shortWords, shortWords + wordsSize);
     } 
     return trace;    
@@ -38,4 +38,7 @@ std::vector<short> WaveformParser::ADCData() {
 
 uint16_t WaveformParser::ADCData(int wordNum, int sampleNum) {
     return (uint16_t)((GetWord(wordNum) >> sampleNum*16) & 0xffff); 
+}
+
+void WaveformParser::Print() {
 }

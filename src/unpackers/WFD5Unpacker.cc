@@ -51,7 +51,7 @@ void WFD5Unpacker::Unpack(const uint64_t* words, unsigned int& wordNum) {
     //Parse and create the data product
     WFD5HeaderPtrCol_->push_back(WFD5HeaderParser_->NewDataProduct(crateNum_));
 
-    WFD5HeaderParser_->Print();
+    //WFD5HeaderParser_->Print();
 
     //Clear data from parser
     WFD5HeaderParser_->Clear();
@@ -77,6 +77,8 @@ void WFD5Unpacker::Unpack(const uint64_t* words, unsigned int& wordNum) {
         //Get the number of waveforms in this channel
         unsigned int waveform_count = ChannelHeaderParser_->WaveformCount();
         //std::cout << "        Waveform count: " << waveform_count << std::endl;
+
+        ChannelHeaderParser_->Clear();
 
         /*
             Now we loop over each waveform
@@ -106,19 +108,16 @@ void WFD5Unpacker::Unpack(const uint64_t* words, unsigned int& wordNum) {
 
             //Create the data product
             auto waveformDataProduct = WaveformParser_->CreateDataProduct();
-                waveformDataProduct.crateNum = crateNum_;
-                waveformDataProduct.amcSlot = amcSlot;
-                waveformDataProduct.channelTag = channelTag;
-                waveformDataProduct.eventNum = eventNum_;
-
-            //Alternate approach
             auto waveformPtr = std::make_shared<dataProducts::Waveform>();
                 waveformPtr->crateNum = crateNum_;
                 waveformPtr->amcSlot = amcSlot;
                 waveformPtr->channelTag = channelTag;
                 waveformPtr->eventNum = eventNum_;
                 waveformPtr->trace = waveformDataProduct.trace;
-                waveformPtrCol_->push_back(waveformPtr);
+                waveformPtrCol_->push_back(std::move(waveformPtr));
+
+            WaveformParser_->Clear();
+
         }
 
         //channel trailer

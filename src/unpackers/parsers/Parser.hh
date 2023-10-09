@@ -18,11 +18,17 @@ namespace parsers {
         virtual ~Parser();
 
         //Set methods
-        void SetWords(std::vector<uint64_t> words);
+        void SetWords(std::vector<uint64_t>& words);
 
         //Get methods
         uint64_t GetSize() const;
         uint64_t GetWord(size_t iWord) const;
+
+        //Clear
+        void Clear();
+
+        //Print
+        virtual void Print() = 0;
 
     private:
         std::string className_ = "Parser";

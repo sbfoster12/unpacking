@@ -20,3 +20,6 @@ dataProducts::WaveformHeader WaveformHeaderParser::CreateDataProduct() {
 //Get methods
 
 uint32_t WaveformHeaderParser::WaveformLength() const { return (GetWord(RWF_WaveformLength_WORD) >> RWF_WaveformLength_BIT) & RWF_WaveformLength_MASK; }
+
+void WaveformHeaderParser::Print() {
+}

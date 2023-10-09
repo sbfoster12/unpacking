@@ -35,3 +35,6 @@ std::string FC7HeaderParser::BoardTypeString() const {
         exit(1);
     }
 }
+
+void FC7HeaderParser::Print() {
+}

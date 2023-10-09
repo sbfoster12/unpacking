@@ -32,6 +32,9 @@ namespace parsers {
         uint32_t WaveformCount() const ;
         uint32_t ChannelTag() const ;
 
+        //Print method
+        void Print() override;
+
     private:
         const std::string className_ = "ChannelHeaderParser";
 

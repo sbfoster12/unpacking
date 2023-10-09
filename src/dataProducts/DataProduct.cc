@@ -6,4 +6,4 @@ DataProduct::DataProduct() {}
     
 DataProduct::~DataProduct() {}
 
-void DataProduct::Print() const {}
+void DataProduct::PrintMembers() const {}

@@ -7,6 +7,7 @@
 #include <sstream>
 #include <memory>
 
+#include <TH1.h>
 #include <TObject.h>
 
 namespace dataProducts {
@@ -19,7 +20,7 @@ namespace dataProducts {
             //Destructor
             virtual ~DataProduct();
 
-            virtual void Print() const;
+            virtual void PrintMembers() const;
 
             ClassDef(DataProduct,1)
     };

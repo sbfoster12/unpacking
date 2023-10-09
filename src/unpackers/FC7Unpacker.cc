@@ -35,6 +35,9 @@ void FC7Unpacker::Unpack(const uint64_t* words, unsigned int& wordNum) {
 
     //Push back to the collection
 
+    //Clear the parser
+    FC7HeaderParser_->Clear();
+
     //Increment wordNum
     wordNum+=data_length;
 };

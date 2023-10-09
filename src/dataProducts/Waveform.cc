@@ -15,7 +15,7 @@ Waveform::Waveform()
     
 Waveform::~Waveform() {}
 
-void Waveform::Print() const {
+void Waveform::PrintMembers() const {
     std::ostringstream oss;
     oss << std::endl;
     oss << "Waveform:" << std::endl;

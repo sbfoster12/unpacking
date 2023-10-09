@@ -40,7 +40,7 @@ namespace dataProducts {
             // 25 bit DDR3 start address
             unsigned int DDR3Address;
 
-            void Print() const override;
+            void PrintMembers() const override;
 
             ClassDefOverride(WaveformHeader,1)
 
