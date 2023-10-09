@@ -9,12 +9,12 @@ CRBankUnpacker::CRBankUnpacker() :
     utils::LoggerHolder::getInstance()->InfoLogger << "We are constructing the CR bank unpacker." << std::endl;
 
     //Initialize the unpackers
-    unpackers_[1] = std::move(std::make_unique<unpackers::WFD5Unpacker>());
-    unpackers_[2] = std::move(std::make_unique<unpackers::FC7Unpacker>());
+    payloadUnpackers_[1] = std::move(std::make_unique<unpackers::WFD5Unpacker>());
+    payloadUnpackers_[2] = std::move(std::make_unique<unpackers::FC7Unpacker>());
 
     //Fill in map of collections
-    unpackers_[1]->RegisterDataProducts(basePtrCol);
-    unpackers_[2]->RegisterDataProducts(basePtrCol);
+    payloadUnpackers_[1]->RegisterDataProducts(basePtrCol_);
+    payloadUnpackers_[2]->RegisterDataProducts(basePtrCol_);
 }
 
 CRBankUnpacker::~CRBankUnpacker() {};
@@ -46,7 +46,7 @@ void CRBankUnpacker::UnpackBank(TMEvent* event, const std::string& bankName) {
             //int data_length = unpackers::ExtractBits(tmpwords[0],0,19);
 
             //Get the unpacker and unpack this payload
-            unpackers_[payload_type]->Unpack(bankData,wordNum);
+            payloadUnpackers_[payload_type]->Unpack(bankData,wordNum);
         }
     } else {
         utils::LoggerHolder::getInstance()->InfoLogger <<"  No CR bank in event ID: " <<  event->event_id << " SN: " << event->serial_number << std::endl;

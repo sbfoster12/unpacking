@@ -35,7 +35,7 @@ namespace unpackers {
         template <typename T>
         std::vector<T> GetCollection(std::string collectionName) {
             //Get the collection of base pointers
-            auto colBasePtr = basePtrCol[collectionName];
+            auto colBasePtr = basePtrCol_[collectionName];
             //Create dervied object (not pointer) collection
             std::vector<T> derivedCol;
             //Loop over references to base pointers and cast to derived
@@ -63,7 +63,7 @@ namespace unpackers {
     protected:
 
         //collections
-        std::map<std::string,std::shared_ptr<dataProducts::DataProductPtrCollection>> basePtrCol;
+        std::map<std::string,std::shared_ptr<dataProducts::DataProductPtrCollection>> basePtrCol_;
 
 
     };

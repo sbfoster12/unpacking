@@ -35,7 +35,7 @@ namespace unpackers {
 
     protected:
         //unpackers
-        std::map<int,std::unique_ptr<unpackers::PayloadUnpacker>> unpackers_;
+        std::map<int,std::unique_ptr<unpackers::PayloadUnpacker>> payloadUnpackers_;
 
     };
 }

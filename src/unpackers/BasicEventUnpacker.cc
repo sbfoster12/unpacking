@@ -17,13 +17,13 @@ BasicEventUnpacker::BasicEventUnpacker()
     auto col0 = bankUnpackers_[0]->GetCollections();
     for (const auto& col : col0) {
         //find if label already exists
-        auto it = basePtrCol.find(col.first);
-        if (it != basePtrCol.end()) {
+        auto it = basePtrCol_.find(col.first);
+        if (it != basePtrCol_.end()) {
             std::cerr << "Error: a dataProduct with this label has already been registered\n"
             << "Details: label = " << col.first << std::endl;
             exit(1);
         } else {
-            basePtrCol[col.first] = col.second;
+            basePtrCol_[col.first] = col.second;
         }
     }
 }

@@ -10,10 +10,10 @@ Unpacker::~Unpacker() {}
 
 std::map<std::string,std::shared_ptr<dataProducts::DataProductPtrCollection>>
 Unpacker::GetCollections() {
-    return basePtrCol;
+    return basePtrCol_;
 }
 
 void Unpacker::ClearCollections() {
     //loop over each collection and clear
-    for (auto& col : basePtrCol) { col.second->clear();}
+    for (auto& col : basePtrCol_) { col.second->clear();}
 }

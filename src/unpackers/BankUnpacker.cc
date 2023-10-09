@@ -9,13 +9,13 @@ BankUnpacker::BankUnpacker() :
 BankUnpacker::~BankUnpacker() {};
 
 void BankUnpacker::UpdateEventNum(int eventNum) {
-    for (auto & unpacker : unpackers_) { 
+    for (auto & unpacker : payloadUnpackers_) {
         unpacker.second->SetEventNum(eventNum);
     }
 }
 
 void BankUnpacker::UpdateCrateNum(int crateNum) {
-    for (auto & unpacker : unpackers_) { 
+    for (auto & unpacker : payloadUnpackers_) {
         unpacker.second->SetCrateNum(crateNum);
     }
 }
