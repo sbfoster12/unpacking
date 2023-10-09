@@ -24,4 +24,4 @@ uint64_t Parser::GetWord(size_t iWord) const {
     return words_.at(iWord);
 }
 
-void Parser::Clear() { words_.clear(); words_.shrink_to_fit(); }
+void Parser::Clear() { words_.clear(); }

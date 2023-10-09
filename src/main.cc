@@ -46,13 +46,17 @@ int main(int argc, char* argv[]) {
     while (true) {
         TMEvent* thisEvent = TMReadEvent(mReader);
         if (!thisEvent) {
-            //Reached end of the file. Clean up and exit
+            //Reached end of the file. Clean up and break
             delete thisEvent;
             thisEvent = NULL;
             break;
         }
+
+        std::cout << "event_id: " << thisEvent->event_id << ", serial number: " << thisEvent->serial_number << std::endl;
+
         // Skip event if it is an internal midas event
         if (unpackers::IsHeaderEvent(thisEvent)) {
+            //clean up
             delete thisEvent;
             continue;
         }
@@ -68,7 +72,7 @@ int main(int argc, char* argv[]) {
             //We can get the collections
             auto cols = basicEventUnpacker->GetCollections();
             for (const auto & col : cols) { 
-                std::cout << "Collection " << col.first << " has size = " << col.second->size() << std::endl;
+                std::cout << "  Collection " << col.first << " has size = " << col.second->size() << std::endl;
             }
 
             // We can also get particular collections (this makes a copy)
@@ -76,9 +80,8 @@ int main(int argc, char* argv[]) {
 
             //Now do can something with these waveforms
             if (wavefromCollection.size() != 0) {
-                std::cout << "This collection has " << wavefromCollection.size() << " entries." << std::endl;
                 for (const auto& waveform : wavefromCollection) {
-                    std::cout << "  This waveform has a trace length = " << waveform.trace.size() << std::endl;
+                    std::cout << "      This waveform has a trace length = " << waveform.trace.size() << std::endl;
                     // for (const auto& sample : waveform.trace) {
                     //     std::cout << sample << ",";
                     // }
@@ -86,13 +89,14 @@ int main(int argc, char* argv[]) {
                 }
             }
         }
+
+        //clean up
         delete thisEvent;
     }
 
-    //Clear the collections
-    basicEventUnpacker->ClearCollections();
-
+    //clean up
     delete basicEventUnpacker;
     delete mReader;
 
+    return 0;
 }

@@ -15,7 +15,7 @@ CollectionsHolder::GetCollections() {
 
 void CollectionsHolder::ClearCollections() {
     //loop over each collection and clear
-    for (auto& col : basePtrCols_) { col.second->clear();}
+    for (auto& col : basePtrCols_) { col.second->clear(); }
 }
 
 void CollectionsHolder::RegisterCollections(const std::map<std::string,std::shared_ptr<dataProducts::DataProductPtrCollection>>& colsToAdd) {
