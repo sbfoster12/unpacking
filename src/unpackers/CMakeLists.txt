@@ -14,3 +14,8 @@ target_include_directories(unpackers
         ${CMAKE_SOURCE_DIR}/external
 )
 
+target_link_libraries(unpackers
+    PUBLIC
+        dataProducts
+        midas
+)

@@ -10,3 +10,5 @@ target_include_directories(midas
     PUBLIC 
         ${CMAKE_SOURCE_DIR}/external
 )
+
+target_link_libraries(midas PRIVATE ${ZLIB_LIBRARIES})

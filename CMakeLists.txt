@@ -9,6 +9,8 @@ find_package(ZLIB REQUIRED)
 cmake_minimum_required(VERSION 3.0)
 set(CMAKE_CXX_STANDARD 17)
 
+set(CMAKE_OSX_ARCHITECTURES "arm64")
+
 #Set the path for where to look for the libraries of the installed target
 set(CMAKE_INSTALL_RPATH "${CMAKE_SOURCE_DIR}/lib")
 
@@ -34,16 +36,24 @@ set(DataProducts
 #Create the executable
 add_executable(pioneer_unpacker src/main.cc)
 
+# Enable debugging symbols
+# target_compile_options(pioneer_unpacker PRIVATE -g)
+
 #link libraries
 target_link_libraries(pioneer_unpacker
     PRIVATE 
-        unpackers dataProducts midas ${ZLIB_LIBRARIES} ${ROOT_LIBRARIES}
+        unpackers
+        dataProducts
+        midas
+        ${ZLIB_LIBRARIES}
+        ${ROOT_LIBRARIES}
 )
 
 #link include directories
 target_include_directories(pioneer_unpacker 
     PRIVATE
-        ${CMAKE_SOURCE_DIR}/include ${ZLIB_INCLUDE_DIRS} ${ROOT_INCLUDE_DIRS}
+        ${ZLIB_INCLUDE_DIRS}
+        ${ROOT_INCLUDE_DIRS}
 )
 
 root_generate_dictionary(DataProductDictionary
@@ -73,3 +83,4 @@ install(TARGETS pioneer_unpacker
         DESTINATION ${CMAKE_SOURCE_DIR}/bin
 )
 
+target_compile_options(pioneer_unpacker PRIVATE -Wall -Wextra)

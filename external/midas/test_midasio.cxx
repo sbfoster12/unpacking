@@ -24,7 +24,7 @@
 std::string toString(int i)
 {
   char buf[256];
-  sprintf(buf, "%d", i);
+  snprintf(buf, sizeof(buf),"%d", i);
   return buf;
 }
 

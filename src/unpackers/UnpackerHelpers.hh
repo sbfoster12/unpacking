@@ -6,7 +6,12 @@
 #include <string>
 #include <vector>
 #include <iomanip>
-#include <endian.h>
+
+#if __APPLE__
+    #include "midas/endian.h"
+#elif __linux
+    #include <endian.h>
+#endif
 
 //Custom
 #include "midas/midasio.h"
