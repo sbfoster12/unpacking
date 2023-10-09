@@ -3,7 +3,8 @@
 using namespace unpackers;
 
 PayloadUnpacker::PayloadUnpacker() 
-    : crateNum_(0),
+    : CollectionsHolder(),
+    crateNum_(0),
     eventNum_(0)
 {};
 

@@ -6,11 +6,12 @@
 #include <string>
 
 //Custom
+#include "unpackers/CollectionsHolder.hh"
 #include "unpackers/BankUnpacker.hh"
 
 namespace unpackers {
 
-    class EventUnpacker : public Unpacker {
+    class EventUnpacker : public CollectionsHolder {
         
     public:
         

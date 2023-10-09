@@ -8,12 +8,12 @@
 
 //Custom
 #include "midas/midasio.h"
-#include "unpackers/Unpacker.hh"
+#include "unpackers/CollectionsHolder.hh"
 #include "unpackers/PayloadUnpacker.hh"
 
 namespace unpackers {
 
-    class BankUnpacker : public Unpacker {
+    class BankUnpacker : public CollectionsHolder {
         
     public:
         

@@ -3,7 +3,8 @@
 using namespace unpackers;
 
 EventUnpacker::EventUnpacker()
-    : className_("EventUnpacker")
+    : CollectionsHolder(),
+    className_("EventUnpacker")
 {}
 
 EventUnpacker::~EventUnpacker() {}

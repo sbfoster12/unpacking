@@ -11,20 +11,9 @@ BasicEventUnpacker::BasicEventUnpacker()
     //Create the bank unpackers
     bankUnpackers_[0] = std::make_unique<CRBankUnpacker>();
 
-    //Register the collections by looping over the
-    //collections in the bankUnpackers
-    //col0 is a map of labels -> shared ptr to the col
-    auto col0 = bankUnpackers_[0]->GetCollections();
-    for (const auto& col : col0) {
-        //find if label already exists
-        auto it = basePtrCol_.find(col.first);
-        if (it != basePtrCol_.end()) {
-            std::cerr << "Error: a dataProduct with this label has already been registered\n"
-            << "Details: label = " << col.first << std::endl;
-            exit(1);
-        } else {
-            basePtrCol_[col.first] = col.second;
-        }
+    //Register the collections in the bank unpacker
+    for (const auto& bankUnpacker : bankUnpackers_) {
+        this->RegisterCollections(bankUnpacker.second->GetCollections());
     }
 }
 

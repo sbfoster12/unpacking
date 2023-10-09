@@ -10,12 +10,12 @@
 #include <map>
 
 //Custom
-#include "unpackers/Unpacker.hh"
+#include "unpackers/CollectionsHolder.hh"
 #include "dataProducts/DataProduct.hh"
 
 namespace unpackers {
 
-    class PayloadUnpacker {
+    class PayloadUnpacker : public CollectionsHolder {
         
     public:
         
@@ -26,8 +26,6 @@ namespace unpackers {
         virtual ~PayloadUnpacker();
 
         virtual void Unpack(const uint64_t* words, unsigned int& wordNum) = 0;
-
-        virtual void RegisterDataProducts(std::map<std::string,std::shared_ptr<dataProducts::DataProductPtrCollection>>& basePtrCol) = 0;
 
         void SetCrateNum(int crateNum);
         void SetEventNum(int eventNum);

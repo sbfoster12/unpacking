@@ -22,8 +22,6 @@ namespace unpackers {
 
         void Unpack(const uint64_t* words, unsigned int& wordNum) override;
 
-        void RegisterDataProducts(std::map<std::string,std::shared_ptr<dataProducts::DataProductPtrCollection>>& basePtrCol) override;
-
         //Collections
         std::shared_ptr<dataProducts::DataProductPtrCollection> FC7HeaderPtrCol_;
 

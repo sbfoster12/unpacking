@@ -9,12 +9,13 @@ CRBankUnpacker::CRBankUnpacker() :
     utils::LoggerHolder::getInstance()->InfoLogger << "We are constructing the CR bank unpacker." << std::endl;
 
     //Initialize the unpackers
-    payloadUnpackers_[1] = std::move(std::make_unique<unpackers::WFD5Unpacker>());
-    payloadUnpackers_[2] = std::move(std::make_unique<unpackers::FC7Unpacker>());
+    payloadUnpackers_[1] = std::make_unique<unpackers::WFD5Unpacker>();
+    payloadUnpackers_[2] = std::make_unique<unpackers::FC7Unpacker>();
 
-    //Fill in map of collections
-    payloadUnpackers_[1]->RegisterDataProducts(basePtrCol_);
-    payloadUnpackers_[2]->RegisterDataProducts(basePtrCol_);
+    //Register the collections in the payload unpackers
+    for (const auto& payloadUnpacker : payloadUnpackers_) {
+        this->RegisterCollections(payloadUnpacker.second->GetCollections());
+    }
 }
 
 CRBankUnpacker::~CRBankUnpacker() {};

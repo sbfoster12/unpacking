@@ -13,15 +13,15 @@
 
 namespace unpackers {
 
-    class Unpacker {
+    class CollectionsHolder {
         
     public:
         
         //Constructor
-        Unpacker();
+        CollectionsHolder();
 
         //Destructor
-        virtual ~Unpacker();
+        virtual ~CollectionsHolder();
 
         std::map<std::string,std::shared_ptr<dataProducts::DataProductPtrCollection>>
         GetCollections();
@@ -35,7 +35,7 @@ namespace unpackers {
         template <typename T>
         std::vector<T> GetCollection(std::string collectionName) {
             //Get the collection of base pointers
-            auto colBasePtr = basePtrCol_[collectionName];
+            auto colBasePtr = basePtrCols_[collectionName];
             //Create dervied object (not pointer) collection
             std::vector<T> derivedCol;
             //Loop over references to base pointers and cast to derived
@@ -56,6 +56,10 @@ namespace unpackers {
 
         void ClearCollections();
 
+        void RegisterCollections(const std::map<std::string,std::shared_ptr<dataProducts::DataProductPtrCollection>>& basePtrCol);
+        void RegisterCollection(const std::string label, const std::shared_ptr<dataProducts::DataProductPtrCollection> colPtr);
+
+
     private:
         //class name
         const std::string className_;
@@ -63,7 +67,7 @@ namespace unpackers {
     protected:
 
         //collections
-        std::map<std::string,std::shared_ptr<dataProducts::DataProductPtrCollection>> basePtrCol_;
+        std::map<std::string,std::shared_ptr<dataProducts::DataProductPtrCollection>> basePtrCols_;
 
 
     };

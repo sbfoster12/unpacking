@@ -12,6 +12,11 @@ WFD5Unpacker::WFD5Unpacker()
     , WaveformParser_(std::make_unique<parsers::WaveformParser>())
 {
     utils::LoggerHolder::getInstance()->InfoLogger << "We are constructing the WFD5 unpacker." << std::endl;
+
+    //Register the collections
+    this->RegisterCollection("WFD5HeaderCollection",WFD5HeaderPtrCol_);
+    this->RegisterCollection("WaveformCollection",waveformPtrCol_);
+
 }
 
 WFD5Unpacker::~WFD5Unpacker() {};
@@ -137,29 +142,29 @@ void WFD5Unpacker::Unpack(const uint64_t* words, unsigned int& wordNum) {
     }
 };
 
-void WFD5Unpacker::RegisterDataProducts(std::map<std::string,std::shared_ptr<dataProducts::DataProductPtrCollection>>& basePtrCol) {
-    std::string WFD5HeaderLabel="WFD5HeaderCollection";
-    std::string WaveformLabel="WaveformCollection";
+// void WFD5Unpacker::RegisterDataProducts(std::map<std::string,std::shared_ptr<dataProducts::DataProductPtrCollection>>& basePtrCol) {
+//     std::string WFD5HeaderLabel="WFD5HeaderCollection";
+//     std::string WaveformLabel="WaveformCollection";
 
-    //check if the WFD5Header collection is already registered
-    auto it = basePtrCol.find(WFD5HeaderLabel);
+//     //check if the WFD5Header collection is already registered
+//     auto it = basePtrCol.find(WFD5HeaderLabel);
 
-    if (it != basePtrCol.end()) {
-        std::cerr << "Error: a dataProduct with this label has already been registered\n"
-        << "Details: label = " << WFD5HeaderLabel << std::endl;
-        exit(1);
-    } else {
-        basePtrCol[WFD5HeaderLabel] = WFD5HeaderPtrCol_;
-    }
+//     if (it != basePtrCol.end()) {
+//         std::cerr << "Error: a dataProduct with this label has already been registered\n"
+//         << "Details: label = " << WFD5HeaderLabel << std::endl;
+//         exit(1);
+//     } else {
+//         basePtrCol[WFD5HeaderLabel] = WFD5HeaderPtrCol_;
+//     }
 
-    //check if the Waveform collection is already registered
-    it = basePtrCol.find(WaveformLabel);
+//     //check if the Waveform collection is already registered
+//     it = basePtrCol.find(WaveformLabel);
 
-    if (it != basePtrCol.end()) {
-        std::cerr << "Error: a dataProduct with this label has already been registered\n"
-        << "Details: label = " << WaveformLabel << std::endl;
-        exit(1);
-    } else {
-        basePtrCol[WaveformLabel] = waveformPtrCol_;
-    }
-}
+//     if (it != basePtrCol.end()) {
+//         std::cerr << "Error: a dataProduct with this label has already been registered\n"
+//         << "Details: label = " << WaveformLabel << std::endl;
+//         exit(1);
+//     } else {
+//         basePtrCol[WaveformLabel] = waveformPtrCol_;
+//     }
+// }

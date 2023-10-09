@@ -3,6 +3,7 @@
 using namespace unpackers;
 
 BankUnpacker::BankUnpacker() :
+    CollectionsHolder(),
     className_("BankUnpacker")
 {}
 

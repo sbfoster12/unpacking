@@ -9,6 +9,9 @@ FC7Unpacker::FC7Unpacker()
 {
     utils::LoggerHolder::getInstance()->InfoLogger << "We are constructing the FC7 unpacker." << std::endl;
 
+    //Fill the collections
+    this->RegisterCollection("FC7HeaderCollection",FC7HeaderPtrCol_);
+
 };
 
 FC7Unpacker::~FC7Unpacker() {};
@@ -42,19 +45,19 @@ void FC7Unpacker::Unpack(const uint64_t* words, unsigned int& wordNum) {
     wordNum+=data_length;
 };
 
-void FC7Unpacker::RegisterDataProducts(std::map<std::string,std::shared_ptr<dataProducts::DataProductPtrCollection>>& basePtrCol) {
+// void FC7Unpacker::RegisterDataProducts(std::map<std::string,std::shared_ptr<dataProducts::DataProductPtrCollection>>& basePtrCol) {
     
-    std::string FC7HeaderLabel="FC7HeaderCollection";
+//     std::string FC7HeaderLabel="FC7HeaderCollection";
 
-    //check if the FC7Header collection is already registered
-    auto it = basePtrCol.find(FC7HeaderLabel);
+//     //check if the FC7Header collection is already registered
+//     auto it = basePtrCol.find(FC7HeaderLabel);
 
-    if (it != basePtrCol.end()) {
-        std::cerr << "Error: a dataProduct with this label has already been registered\n"
-        << "Details: label = " << FC7HeaderLabel << std::endl;
-        exit(1);
-    } else {
-        basePtrCol[FC7HeaderLabel] = FC7HeaderPtrCol_;
-    }
+//     if (it != basePtrCol.end()) {
+//         std::cerr << "Error: a dataProduct with this label has already been registered\n"
+//         << "Details: label = " << FC7HeaderLabel << std::endl;
+//         exit(1);
+//     } else {
+//         basePtrCol[FC7HeaderLabel] = FC7HeaderPtrCol_;
+//     }
 
-}
+// }
