@@ -7,7 +7,7 @@ WFD5HeaderParser::WFD5HeaderParser() : Parser() {};
 WFD5HeaderParser::~WFD5HeaderParser() {};
 
 //Method to create shared ptr
-std::shared_ptr<dataProducts::WFD5Header> 
+std::unique_ptr<dataProducts::WFD5Header> 
 WFD5HeaderParser::NewDataProduct(unsigned int crateNum) {
     return std::make_unique<dataProducts::WFD5Header>(
                 crateNum

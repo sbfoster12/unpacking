@@ -19,13 +19,8 @@ namespace parsers {
         //Destructor
         ~WaveformParser();
 
-        //Method to make the data product
-        dataProducts::Waveform CreateDataProduct();
-
         //Get methods
-        std::vector<short> ADCData();
-
-        uint16_t ADCData(int wordNum, int sampleNum);
+        std::vector<short>  ADCData() const;
 
         //Print method
         void Print() override;

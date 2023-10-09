@@ -18,7 +18,7 @@ ChannelHeader::ChannelHeader()
 
 ChannelHeader::~ChannelHeader() {};
 
-void ChannelHeader::PrintMembers() const {
+void ChannelHeader::Show() const {
     std::ostringstream oss;
     oss << std::endl;
     oss << "ChannelHeader:" << std::endl;

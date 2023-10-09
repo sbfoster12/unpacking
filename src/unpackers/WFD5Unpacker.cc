@@ -53,10 +53,8 @@ void WFD5Unpacker::Unpack(const uint64_t* words, unsigned int& wordNum) {
         return;
     }
 
-    //Parse and create the data product
+    //Create the data product
     WFD5HeaderPtrCol_->push_back(WFD5HeaderParser_->NewDataProduct(crateNum_));
-
-    //WFD5HeaderParser_->Print();
 
     //Clear data from parser
     WFD5HeaderParser_->Clear();
@@ -77,12 +75,11 @@ void WFD5Unpacker::Unpack(const uint64_t* words, unsigned int& wordNum) {
 
         //Get the channel tag
         uint32_t channelTag = ChannelHeaderParser_->ChannelTag();
-        //std::cout << "        Channel tag: " << channelTag << std::endl;
 
         //Get the number of waveforms in this channel
         unsigned int waveform_count = ChannelHeaderParser_->WaveformCount();
-        //std::cout << "        Waveform count: " << waveform_count << std::endl;
 
+        //Clean up
         ChannelHeaderParser_->Clear();
 
         /*
@@ -101,7 +98,6 @@ void WFD5Unpacker::Unpack(const uint64_t* words, unsigned int& wordNum) {
 
             //Get the waveform length (number of 8 bit ADC samples = 2 64 bit words)
             uint32_t waveform_length = WaveformHeaderParser_->WaveformLength();
-            //std::cout << "            waveformLength: " << waveform_length << std::endl;
 
             /*
                 Now get the ADC data , which is waveform_length*2 64-bit words
@@ -112,15 +108,17 @@ void WFD5Unpacker::Unpack(const uint64_t* words, unsigned int& wordNum) {
             WaveformParser_->SetWords(adc_words);
 
             //Create the data product
-            auto waveformDataProduct = WaveformParser_->CreateDataProduct();
-            auto waveformPtr = std::make_shared<dataProducts::Waveform>();
-                waveformPtr->crateNum = crateNum_;
-                waveformPtr->amcSlot = amcSlot;
-                waveformPtr->channelTag = channelTag;
-                waveformPtr->eventNum = eventNum_;
-                waveformPtr->trace = waveformDataProduct.trace;
-                waveformPtrCol_->push_back(std::move(waveformPtr));
+            waveformPtrCol_->push_back(std::make_unique<dataProducts::Waveform>(
+                crateNum_
+                ,amcSlot
+                ,channelTag
+                ,eventNum_
+                ,waveform_length
+                ,0
+                ,WaveformParser_->ADCData()
+            ));
 
+            //Clean up
             WaveformParser_->Clear();
 
         }

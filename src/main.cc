@@ -48,7 +48,6 @@ int main(int argc, char* argv[]) {
         if (!thisEvent) {
             //Reached end of the file. Clean up and break
             delete thisEvent;
-            thisEvent = NULL;
             break;
         }
 
@@ -81,11 +80,7 @@ int main(int argc, char* argv[]) {
             //Now do can something with these waveforms
             if (wavefromCollection.size() != 0) {
                 for (const auto& waveform : wavefromCollection) {
-                    std::cout << "      This waveform has a trace length = " << waveform.trace.size() << std::endl;
-                    // for (const auto& sample : waveform.trace) {
-                    //     std::cout << sample << ",";
-                    // }
-                    // std::cout << std::endl;
+                    waveform.Show();
                 }
             }
         }

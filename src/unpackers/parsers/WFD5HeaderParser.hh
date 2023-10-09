@@ -73,10 +73,10 @@ namespace parsers {
         ~WFD5HeaderParser();
 
         //Method to create shared ptr
-        std::shared_ptr<dataProducts::WFD5Header> NewDataProduct(unsigned int crateNum);
+        std::unique_ptr<dataProducts::WFD5Header> NewDataProduct(unsigned int crateNum);
 
         //Get methods
-        uint32_t        AMCNo() const ;
+        uint32_t        AMCNo() const;
         uint32_t        LV1ID() const;
         uint32_t        BcN() const;
         uint32_t        OrN() const;

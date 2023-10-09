@@ -10,6 +10,15 @@ namespace dataProducts {
         public:
             Waveform();
 
+            Waveform(int crateNum
+                ,int amcNum
+                ,int channelTag
+                ,int eventNum
+                ,unsigned int length
+                ,int pedestalLevel
+                ,std::vector<short> trace
+            );
+
             //Destructor
             ~Waveform();
 
@@ -17,7 +26,7 @@ namespace dataProducts {
             int crateNum;
 
             // AMC slot number
-            int amcSlot;
+            int amcNum;
 
             // Channel tag
             int channelTag;
@@ -34,7 +43,7 @@ namespace dataProducts {
             // ADC count of each sample
             std::vector<short> trace;
 
-            void PrintMembers() const override;
+            void Show() const override;
 
             ClassDefOverride(Waveform,1)
 

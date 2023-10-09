@@ -17,7 +17,7 @@ WaveformHeader::WaveformHeader()
             
 WaveformHeader::~WaveformHeader() {};
 
-void WaveformHeader::PrintMembers() const {
+void WaveformHeader::Show() const {
     std::ostringstream oss;
     oss << std::endl;
     oss << "WaveformHeader: " << std::endl;

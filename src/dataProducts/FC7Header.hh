@@ -50,7 +50,7 @@ namespace dataProducts {
             unsigned int minorRevision;
             unsigned int patchRevision;
 
-            void PrintMembers() const override;
+            void Show() const override;
 
             ClassDefOverride(FC7Header,1)
 

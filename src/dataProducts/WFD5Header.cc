@@ -49,7 +49,7 @@ WFD5Header::WFD5Header(
 
 WFD5Header::~WFD5Header() {};
 
-void WFD5Header::PrintMembers() const {
+void WFD5Header::Show() const {
     std::ostringstream oss;
     oss << std::endl;
     oss << "WFD5Header: " << crateNum << std::endl;

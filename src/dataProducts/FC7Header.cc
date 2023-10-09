@@ -21,7 +21,7 @@ FC7Header::FC7Header()
 
 FC7Header::~FC7Header() {};
 
-void FC7Header::PrintMembers() const {
+void FC7Header::Show() const {
     std::ostringstream oss;
     oss << std::endl;
     oss << "FC7Header:" << std::endl;

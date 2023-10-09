@@ -20,7 +20,7 @@ namespace dataProducts {
             //Destructor
             virtual ~DataProduct();
 
-            virtual void PrintMembers() const;
+            virtual void Show() const;
 
             ClassDef(DataProduct,1)
     };
