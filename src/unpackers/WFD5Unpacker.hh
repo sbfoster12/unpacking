@@ -29,7 +29,9 @@ namespace unpackers {
 
         //Collections
         std::shared_ptr<dataProducts::DataProductPtrCollection> WFD5HeaderPtrCol_;
-        std::shared_ptr<dataProducts::DataProductPtrCollection> waveformPtrCol_;
+        std::shared_ptr<dataProducts::DataProductPtrCollection> ChannelHeaderPtrCol_;
+        std::shared_ptr<dataProducts::DataProductPtrCollection> WaveformHeaderPtrCol_;
+        std::shared_ptr<dataProducts::DataProductPtrCollection> WaveformPtrCol_;
 
     private:
         const std::string className_ = "WFD5Unpacker";

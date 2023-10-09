@@ -6,15 +6,8 @@ WaveformHeaderParser::WaveformHeaderParser() : Parser() {};
 
 WaveformHeaderParser::~WaveformHeaderParser() {};
 
-dataProducts::WaveformHeader WaveformHeaderParser::CreateDataProduct() {
-    
-    //create the data product
-    auto WaveformHeader = dataProducts::WaveformHeader();
-    
-    //fill it
-
-    //return it
-    return WaveformHeader;
+std::unique_ptr<dataProducts::WaveformHeader> WaveformHeaderParser::NewDataProduct() {
+    return std::make_unique<dataProducts::WaveformHeader>();
 }
 
 //Get methods

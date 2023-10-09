@@ -26,7 +26,7 @@ namespace parsers {
         ~ChannelHeaderParser();
 
         //Method to make the data product
-        dataProducts::ChannelHeader CreateDataProduct();
+        std::unique_ptr<dataProducts::ChannelHeader> NewDataProduct();
 
         //Get methods
         uint32_t WaveformCount() const ;

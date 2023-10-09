@@ -46,5 +46,6 @@ void Waveform::Show() const {
     for (const auto & sample : trace) {
         oss << sample << ", ";
     }
-    std::cout << std::endl; << oss.str();
+    oss << std::endl;
+    std::cout << oss.str();
 }

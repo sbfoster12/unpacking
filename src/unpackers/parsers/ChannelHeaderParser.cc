@@ -6,15 +6,8 @@ ChannelHeaderParser::ChannelHeaderParser() : Parser() {};
 
 ChannelHeaderParser::~ChannelHeaderParser() {};
 
-dataProducts::ChannelHeader ChannelHeaderParser::CreateDataProduct() {
-	
-	//create the data product
-	auto ChannelHeader = dataProducts::ChannelHeader();
-	
-	//fill it
-
-	//return it
-	return ChannelHeader;
+std::unique_ptr<dataProducts::ChannelHeader> ChannelHeaderParser::NewDataProduct() {
+    return std::make_unique<dataProducts::ChannelHeader>();
 }
 
 //Get methods

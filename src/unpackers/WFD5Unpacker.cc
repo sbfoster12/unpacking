@@ -5,7 +5,9 @@ using namespace unpackers;
 WFD5Unpacker::WFD5Unpacker() 
     : PayloadUnpacker()
     , WFD5HeaderPtrCol_(std::make_shared<dataProducts::DataProductPtrCollection>())
-    , waveformPtrCol_(std::make_shared<dataProducts::DataProductPtrCollection>())
+    , ChannelHeaderPtrCol_(std::make_shared<dataProducts::DataProductPtrCollection>())
+    , WaveformHeaderPtrCol_(std::make_shared<dataProducts::DataProductPtrCollection>())
+    , WaveformPtrCol_(std::make_shared<dataProducts::DataProductPtrCollection>())
     , WFD5HeaderParser_(std::make_unique<parsers::WFD5HeaderParser>())
     , ChannelHeaderParser_(std::make_unique<parsers::ChannelHeaderParser>())
     , WaveformHeaderParser_(std::make_unique<parsers::WaveformHeaderParser>())
@@ -15,7 +17,9 @@ WFD5Unpacker::WFD5Unpacker()
 
     //Register the collections
     this->RegisterCollection("WFD5HeaderCollection",WFD5HeaderPtrCol_);
-    this->RegisterCollection("WaveformCollection",waveformPtrCol_);
+    this->RegisterCollection("ChannelHeaderCollection",ChannelHeaderPtrCol_);
+    this->RegisterCollection("WaveformHeaderCollection",WaveformHeaderPtrCol_);
+    this->RegisterCollection("WaveformCollection",WaveformPtrCol_);
 
 }
 
@@ -79,6 +83,9 @@ void WFD5Unpacker::Unpack(const uint64_t* words, unsigned int& wordNum) {
         //Get the number of waveforms in this channel
         unsigned int waveform_count = ChannelHeaderParser_->WaveformCount();
 
+        //Create the data product
+        ChannelHeaderPtrCol_->push_back(ChannelHeaderParser_->NewDataProduct());
+
         //Clean up
         ChannelHeaderParser_->Clear();
 
@@ -99,6 +106,12 @@ void WFD5Unpacker::Unpack(const uint64_t* words, unsigned int& wordNum) {
             //Get the waveform length (number of 8 bit ADC samples = 2 64 bit words)
             uint32_t waveform_length = WaveformHeaderParser_->WaveformLength();
 
+            //Create the data product
+            WaveformHeaderPtrCol_->push_back(WaveformHeaderParser_->NewDataProduct());
+
+            //Clean up
+            WaveformHeaderParser_->Clear();
+
             /*
                 Now get the ADC data , which is waveform_length*2 64-bit words
             */
@@ -108,7 +121,7 @@ void WFD5Unpacker::Unpack(const uint64_t* words, unsigned int& wordNum) {
             WaveformParser_->SetWords(adc_words);
 
             //Create the data product
-            waveformPtrCol_->push_back(std::make_unique<dataProducts::Waveform>(
+            WaveformPtrCol_->push_back(std::make_unique<dataProducts::Waveform>(
                 crateNum_
                 ,amcSlot
                 ,channelTag
@@ -139,30 +152,3 @@ void WFD5Unpacker::Unpack(const uint64_t* words, unsigned int& wordNum) {
 
     }
 };
-
-// void WFD5Unpacker::RegisterDataProducts(std::map<std::string,std::shared_ptr<dataProducts::DataProductPtrCollection>>& basePtrCol) {
-//     std::string WFD5HeaderLabel="WFD5HeaderCollection";
-//     std::string WaveformLabel="WaveformCollection";
-
-//     //check if the WFD5Header collection is already registered
-//     auto it = basePtrCol.find(WFD5HeaderLabel);
-
-//     if (it != basePtrCol.end()) {
-//         std::cerr << "Error: a dataProduct with this label has already been registered\n"
-//         << "Details: label = " << WFD5HeaderLabel << std::endl;
-//         exit(1);
-//     } else {
-//         basePtrCol[WFD5HeaderLabel] = WFD5HeaderPtrCol_;
-//     }
-
-//     //check if the Waveform collection is already registered
-//     it = basePtrCol.find(WaveformLabel);
-
-//     if (it != basePtrCol.end()) {
-//         std::cerr << "Error: a dataProduct with this label has already been registered\n"
-//         << "Details: label = " << WaveformLabel << std::endl;
-//         exit(1);
-//     } else {
-//         basePtrCol[WaveformLabel] = waveformPtrCol_;
-//     }
-// }

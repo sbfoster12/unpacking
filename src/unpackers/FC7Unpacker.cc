@@ -44,20 +44,3 @@ void FC7Unpacker::Unpack(const uint64_t* words, unsigned int& wordNum) {
     //Increment wordNum
     wordNum+=data_length;
 };
-
-// void FC7Unpacker::RegisterDataProducts(std::map<std::string,std::shared_ptr<dataProducts::DataProductPtrCollection>>& basePtrCol) {
-    
-//     std::string FC7HeaderLabel="FC7HeaderCollection";
-
-//     //check if the FC7Header collection is already registered
-//     auto it = basePtrCol.find(FC7HeaderLabel);
-
-//     if (it != basePtrCol.end()) {
-//         std::cerr << "Error: a dataProduct with this label has already been registered\n"
-//         << "Details: label = " << FC7HeaderLabel << std::endl;
-//         exit(1);
-//     } else {
-//         basePtrCol[FC7HeaderLabel] = FC7HeaderPtrCol_;
-//     }
-
-// }

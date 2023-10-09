@@ -23,7 +23,7 @@ namespace parsers {
         ~WaveformHeaderParser();
 
         //Method to make the data product
-        dataProducts::WaveformHeader CreateDataProduct();
+        std::unique_ptr<dataProducts::WaveformHeader> NewDataProduct();
 
         //Get methods
         uint32_t WaveformLength() const ;
