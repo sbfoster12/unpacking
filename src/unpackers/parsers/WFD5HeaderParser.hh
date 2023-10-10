@@ -57,8 +57,6 @@
 #define ChannelsEnabled_WORD 1
 #define ChannelsEnabled_BIT 59
 #define ChannelsEnabled_MASK 0x1f
-#define WFD5_BT 1
-#define FC7_BT 2
 
 namespace parsers {
 
@@ -86,7 +84,6 @@ namespace parsers {
         uint32_t        Endianness() const;
         uint32_t        BoardID() const;
         uint32_t        BoardType() const;
-        std::string     BoardTypeString()const ;
         uint32_t        CRC() const;
         uint32_t        LV1ID_TR() const;
         uint32_t        DataLength_TR() const;

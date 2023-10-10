@@ -7,6 +7,9 @@
 #include "unpackers/WFD5Unpacker.hh"
 #include "unpackers/FC7Unpacker.hh"
 
+#define WFD5_BOARD_TYPE 1
+#define FC7_BOARD_TYPE 2
+
 namespace unpackers {
 
     class CRBankUnpacker : public BankUnpacker {

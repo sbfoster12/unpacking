@@ -9,8 +9,8 @@ CRBankUnpacker::CRBankUnpacker() :
     utils::LoggerHolder::getInstance()->InfoLogger << "We are constructing the CR bank unpacker." << std::endl;
 
     //Initialize the unpackers
-    payloadUnpackers_[1] = std::make_unique<unpackers::WFD5Unpacker>();
-    payloadUnpackers_[2] = std::make_unique<unpackers::FC7Unpacker>();
+    payloadUnpackers_[WFD5_BOARD_TYPE] = std::make_unique<unpackers::WFD5Unpacker>();
+    payloadUnpackers_[FC7_BOARD_TYPE] = std::make_unique<unpackers::FC7Unpacker>();
 
     //Register the collections in the payload unpackers
     for (const auto& payloadUnpacker : payloadUnpackers_) {

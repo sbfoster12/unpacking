@@ -36,19 +36,6 @@ uint32_t        WFD5HeaderParser::TriggerType() const { return (GetWord(TriggerT
 uint32_t        WFD5HeaderParser::Endianness() const { return (GetWord(Endianness_WORD) >> Endianness_BIT) & Endianness_MASK; }
 uint32_t        WFD5HeaderParser::BoardID() const { return (GetWord(BoardID_WORD) >> BoardID_BIT) & BoardID_MASK; }
 uint32_t        WFD5HeaderParser::BoardType() const {return (GetWord(BoardType_WORD) >> BoardType_BIT) & BoardType_MASK; }
-std::string     WFD5HeaderParser::BoardTypeString() const {
-    auto boardType = this->BoardType();
-    if (boardType == WFD5_BT) {
-        return "WFD5";
-    } else if (boardType == FC7_BT) {
-        return "FC7";
-    } else {
-        std::cerr << "Error: the board type doesn't match a WFD5 or an FC7\n"
-        << "Location: WFD5HeaderParser::BoardTypeString\n"
-        << "Details: the board type found was " << boardType << std::endl;
-        exit(1);
-    }
-}
 uint32_t        WFD5HeaderParser::CRC() const { return (GetWord(GetSize() - 1) >> CRC_BIT) & CRC_MASK; }
 uint32_t        WFD5HeaderParser::LV1ID_TR() const { return (GetWord(GetSize() - 1) >> LV1ID_TR_BIT) & LV1ID_TR_MASK; }
 uint32_t        WFD5HeaderParser::DataLength_TR() const { return (GetWord(GetSize() - 1) >> DataLength_TR_BIT) & DataLength_TR_MASK; }
