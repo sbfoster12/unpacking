@@ -10,6 +10,20 @@ namespace dataProducts {
         public:
             FC7Header();
 
+            FC7Header(unsigned int crateNumArg
+                ,unsigned int amcNumArg
+                ,unsigned int triggerNumArg
+                ,unsigned long clockCounterArg
+                ,unsigned int fillTypeArg
+                ,unsigned int boardTypeArg
+                ,unsigned int fc7TypeArg
+                ,unsigned int boardIDArg
+                ,unsigned char xadcAlarmsArg
+                ,bool emptyEventArg
+                ,unsigned int majorRevisionArg
+                ,unsigned int minorRevisionArg
+                ,unsigned patchRevisionArg);
+
             //Destructor
             ~FC7Header();
 

@@ -9,7 +9,7 @@ BasicEventUnpacker::BasicEventUnpacker()
     utils::LoggerHolder::getInstance()->InfoLogger << "We are constructing the basic event unpacker." << std::endl;
 
     //Create the bank unpackers
-    bankUnpackers_[0] = std::make_unique<CRBankUnpacker>();
+    bankUnpackers_[CR_BANK_ID] = std::make_unique<CRBankUnpacker>();
 
     //Register the collections in the bank unpacker
     for (const auto& bankUnpacker : bankUnpackers_) {
@@ -31,7 +31,7 @@ void BasicEventUnpacker::UnpackEvent(TMEvent* event) {
     event->FindAllBanks();
     for (const auto& bank : event->banks) {
         if (bank.name.substr(0, 2) == "CR") {
-            bankUnpackers_[0]->UnpackBank(event, bank.name);
+            bankUnpackers_[CR_BANK_ID]->UnpackBank(event, bank.name);
         }
     }
 }

@@ -19,6 +19,35 @@ FC7Header::FC7Header()
     patchRevision(0)
 {};
 
+FC7Header::FC7Header(unsigned int crateNumArg
+    ,unsigned int amcNumArg
+    ,unsigned int triggerNumArg
+    ,unsigned long clockCounterArg
+    ,unsigned int fillTypeArg
+    ,unsigned int boardTypeArg
+    ,unsigned int fc7TypeArg
+    ,unsigned int boardIDArg
+    ,unsigned char xadcAlarmsArg
+    ,bool emptyEventArg
+    ,unsigned int majorRevisionArg
+    ,unsigned int minorRevisionArg
+    ,unsigned patchRevisionArg)
+    : DataProduct(),
+    crateNum(0),
+    amcNum(0),
+    triggerNum(0),
+    clockCounter(0),
+    fillType(0),
+    boardType(0),
+    fc7Type(0),
+    boardID(0),
+    xadcAlarms(0),
+    emptyEvent(false),
+    majorRevision(0),
+    minorRevision(0),
+    patchRevision(0)
+{};
+
 FC7Header::~FC7Header() {};
 
 void FC7Header::Show() const {

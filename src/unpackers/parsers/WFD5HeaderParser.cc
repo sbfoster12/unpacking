@@ -68,20 +68,27 @@ unsigned int    WFD5HeaderParser::NumEnabledChannels() const {
   return nEnabledChannels;
 }
 
+std::ostringstream WFD5HeaderParser::Stream() {
+    std::ostringstream oss;
+    oss << "\t---> Entering AMCSlotNo: " << AMCNo() << std::endl;
+    oss << "\tBoardType: " << BoardType() << std::endl;
+    oss << "\tTriggerType: " << TriggerType() << std::endl;
+    oss << "\tDataLength: " << DataLength() << std::endl;
+    oss << "\tBoardID: " << BoardID() << std::endl;
+    oss << "\tBcN: " << BcN() << std::endl;
+    oss << "\tOrN: " << OrN() << std::endl;
+    oss << "\tLV1ID: " << LV1ID() << std::endl;
+    oss << "\tClockCounter: " << ClockCounter() << std::endl;
+    oss << "\tXADCAlarms are zero: " << (!XADCAlarm() ? "true" : "false") << std::endl;
+    oss << "\tEmptyEvent: " << EmptyEvent() << std::endl;
+    oss << "\tEndianness: " << Endianness() << std::endl;
+    oss << "\tMajorRevision: " << MajorRevision() << std::endl;
+    oss << "\tMinorRevision: " << MinorRevision() << std::endl;
+    oss << "\tPatchRevision: " << PatchRevision() << std::endl;
+    return oss;
+}
+
 void WFD5HeaderParser::Print() {
-    std::cout << "\t---> Entering AMCSlotNo: " << AMCNo() << std::endl;
-    std::cout << "\tBoardType: " << BoardType() << std::endl;
-    std::cout << "\tTriggerType: " << TriggerType() << std::endl;
-    std::cout << "\tDataLength: " << DataLength() << std::endl;
-    std::cout << "\tBoardID: " << BoardID() << std::endl;
-    std::cout << "\tBcN: " << BcN() << std::endl;
-    std::cout << "\tOrN: " << OrN() << std::endl;
-    std::cout << "\tLV1ID: " << LV1ID() << std::endl;
-    std::cout << "\tClockCounter: " << ClockCounter() << std::endl;
-    std::cout << "\tXADCAlarms are zero: " << (!XADCAlarm() ? "true" : "false") << std::endl;
-    std::cout << "\tEmptyEvent: " << EmptyEvent() << std::endl;
-    std::cout << "\tEndianness: " << Endianness() << std::endl;
-    std::cout << "\tMajorRevision: " << MajorRevision() << std::endl;
-    std::cout << "\tMinorRevision: " << MinorRevision() << std::endl;
-    std::cout << "\tPatchRevision: " << PatchRevision() << std::endl;
+    std::cout << this->Stream().str();
+
 }

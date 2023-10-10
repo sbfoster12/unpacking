@@ -75,6 +75,7 @@ namespace parsers {
         uint32_t DataIntCheck() const;
 
         //Print method
+        std::ostringstream Stream() override;
         void Print() override;
 
     private:

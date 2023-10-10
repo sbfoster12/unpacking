@@ -9,6 +9,8 @@
 #include "unpackers/CollectionsHolder.hh"
 #include "unpackers/BankUnpacker.hh"
 
+#define CR_BANK_ID 0
+
 namespace unpackers {
 
     class EventUnpacker : public CollectionsHolder {

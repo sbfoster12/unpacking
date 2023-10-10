@@ -30,6 +30,7 @@ namespace parsers {
         void Clear();
 
         //Print
+        virtual std::ostringstream Stream() = 0;
         virtual void Print() = 0;
 
     private:

@@ -20,4 +20,13 @@ std::vector<short> WaveformParser::ADCData() const {
     return trace;
 }
 
-void WaveformParser::Print() {}
+std::ostringstream WaveformParser::Stream() {
+    std::ostringstream oss;
+    oss << "\t\t\t\t---> Entering Waveform data: " << std::endl;
+    oss << "\t\t\t\tADCData.size(): " << ADCData().size() << std::endl;
+    return oss;
+}
+
+void WaveformParser::Print() {
+    std::cout << this->Stream().str();
+}

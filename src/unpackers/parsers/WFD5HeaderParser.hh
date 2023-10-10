@@ -98,6 +98,7 @@ namespace parsers {
         unsigned int    NumEnabledChannels() const;
 
         //Print method
+        std::ostringstream Stream() override;
         void Print() override;
 
     private:

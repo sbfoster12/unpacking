@@ -17,30 +17,32 @@ FC7Unpacker::FC7Unpacker()
 FC7Unpacker::~FC7Unpacker() {};
 
 void FC7Unpacker::Unpack(const uint64_t* words, unsigned int& wordNum) {
-    utils::LoggerHolder::getInstance()->InfoLogger << " We are unpacking a FC7 payload." << std::endl;
+    utils::LoggerHolder::getInstance()->InfoLogger << "\tWe are unpacking a FC7 payload." << std::endl;
 
-    //First, we get the header, which is 3 64-bit words long
+    /*
+        First up is the AMC13+FC7 header, which is 3 words long
+    */
+
     auto header_words = GetXWords(words,wordNum,3,"bigendian");
-    wordNum-=3;
 
     //Set the words in the parser
     FC7HeaderParser_->SetWords(header_words);
 
     //Get the data length
     int data_length = FC7HeaderParser_->DataLength();
-    //std::cout << "data_length: " << data_length << std::endl;
 
     //Parse and create the data product
-    auto FC7HeaderDataProduct = FC7HeaderParser_->CreateDataProduct();
-
-    //TODO: Do more parsing...
-
-
-    //Push back to the collection
+    FC7HeaderPtrCol_->push_back(FC7HeaderParser_->NewDataProduct(crateNum_));
 
     //Clear the parser
+    utils::LoggerHolder::getInstance()->DebugLogger << FC7HeaderParser_->Stream().str();
     FC7HeaderParser_->Clear();
 
+    /*
+        Do more parsing
+    */
+
     //Increment wordNum
+    wordNum-=3; // for AMC13+FC7 header
     wordNum+=data_length;
 };

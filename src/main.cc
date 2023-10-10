@@ -18,19 +18,22 @@ access the unpacked data
 #include "unpackers/BasicEventUnpacker.hh"
 #include "unpackers/UnpackerHelpers.hh"
 #include "dataProducts/Waveform.hh"
+#include "unpackers/utils/Logger.hh"
 
 int main(int argc, char* argv[]) {
 
-    // Get the input file
 
-    // We need two arguments (program and file name)
-    if (argc < 2) {
-        std::cerr << "Usage: " << argv[0] << " [file_name]" << std::endl;
+    // We need three arguments (program, file name, verbosity)
+    if (argc < 3) {
+        std::cerr << "Usage: " << argv[0] << " [file_name] [verbosity]" << std::endl;
         return 1;
     }
 
     // The first command-line argument (argv[1]) is the file name
     std::string file_name = argv[1];
+    // Set verbosity
+    int verbosity = std::stoi(argv[2]);
+     utils::LoggerHolder::getInstance()->SetVerbosity(verbosity);
 
 
     // Set up an event unpacker object
@@ -51,7 +54,7 @@ int main(int argc, char* argv[]) {
             break;
         }
 
-        std::cout << "event_id: " << thisEvent->event_id << ", serial number: " << thisEvent->serial_number << std::endl;
+        // std::cout << "event_id: " << thisEvent->event_id << ", serial number: " << thisEvent->serial_number << std::endl;
 
         // Skip event if it is an internal midas event
         if (unpackers::IsHeaderEvent(thisEvent)) {
@@ -70,7 +73,7 @@ int main(int argc, char* argv[]) {
 
             //We can get the collections
             auto cols = basicEventUnpacker->GetCollections();
-            for (const auto & col : cols) { 
+            for (const auto & col : cols) {
                 std::cout << "  Collection " << col.first << " has size = " << col.second->size() << std::endl;
             }
 

@@ -58,6 +58,7 @@ namespace parsers {
         uint32_t WaveformIndex() const;
 
         //Print method
+        std::ostringstream Stream() override;
         void Print() override;
 
     private:

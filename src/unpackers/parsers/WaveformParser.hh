@@ -23,6 +23,7 @@ namespace parsers {
         std::vector<short>  ADCData() const;
 
         //Print method
+        std::ostringstream Stream() override;
         void Print() override;
 
     private:

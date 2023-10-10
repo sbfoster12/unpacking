@@ -31,12 +31,19 @@ uint32_t WaveformHeaderParser::ChannelTag() const { return (GetWord(RWF_ChannelT
 uint32_t WaveformHeaderParser::WaveformGap() const { return (GetWord(RWF_WaveformGap_WORD) >> RWF_WaveformGap_BIT) & RWF_WaveformGap_MASK; }
 uint32_t WaveformHeaderParser::WaveformIndex() const { return (GetWord(RWF_WaveformIndex_WORD) >> RWF_WaveformIndex_BIT) & RWF_WaveformIndex_MASK;}
 
+std::ostringstream WaveformHeaderParser::Stream() {
+    std::ostringstream oss;
+    oss << "\t\t\t---> WaveformIndex: " << WaveformIndex() << std::endl;
+    oss << "\t\t\tFillType: " << FillType() << std::endl;
+    oss << "\t\t\tWaveformGap: " << WaveformGap() << std::endl;
+    oss << "\t\t\tWaveformCount: " << WaveformCount() << std::endl;
+    oss << "\t\t\tWaveformLength: " << WaveformLength() << std::endl;
+    oss << "\t\t\tChannelTag: " << ChannelTag() << std::endl;
+    oss << "\t\t\tDDR3Address: 0x" << std::hex << DDR3Address() << std::dec << std::endl;
+    return oss;
+}
+
 void WaveformHeaderParser::Print() {
-    std::cout << "\t\t\t---> WaveformIndex: " << WaveformIndex() << std::endl;
-    std::cout << "\t\t\tFillType: " << FillType() << std::endl;
-    std::cout << "\t\t\tWaveformGap: " << WaveformGap() << std::endl;
-    std::cout << "\t\t\tWaveformCount: " << WaveformCount() << std::endl;
-    std::cout << "\t\t\tWaveformLength: " << WaveformLength() << std::endl;
-    std::cout << "\t\t\tChannelTag: " << ChannelTag() << std::endl;
-    std::cout << "\t\t\tDDR3Address: 0x" << std::hex << DDR3Address() << std::dec << std::endl;
+    std::cout << this->Stream().str();
+
 }
