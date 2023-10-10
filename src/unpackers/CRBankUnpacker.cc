@@ -47,7 +47,14 @@ void CRBankUnpacker::UnpackBank(TMEvent* event, const std::string& bankName) {
             //int data_length = unpackers::ExtractBits(tmpwords[0],0,19);
 
             //Get the unpacker and unpack this payload
-            payloadUnpackers_[payload_type]->Unpack(bankData,wordNum);
+            if (payloadUnpackers_.find(payload_type) != payloadUnpackers_.end()) {
+                payloadUnpackers_[payload_type]->Unpack(bankData,wordNum);
+            } else {
+                std::cerr << "Error: Payload unpacker with given type was not found.\n"
+                << "Location: CRBankUnpacker::UnpackBank(TMEvent* event, const std::string& bankName)\n"
+                << "Details: the provided payload id was " << payload_type << std::endl;
+                exit(1);
+            }
         }
     } else {
         utils::LoggerHolder::getInstance()->InfoLogger <<"  No CR bank in event ID: " <<  event->event_id << " SN: " << event->serial_number << std::endl;

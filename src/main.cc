@@ -54,7 +54,7 @@ int main(int argc, char* argv[]) {
             break;
         }
 
-        // std::cout << "event_id: " << thisEvent->event_id << ", serial number: " << thisEvent->serial_number << std::endl;
+        std::cout << "event_id: " << thisEvent->event_id << ", serial number: " << thisEvent->serial_number << std::endl;
 
         // Skip event if it is an internal midas event
         if (unpackers::IsHeaderEvent(thisEvent)) {
