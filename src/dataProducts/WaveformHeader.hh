@@ -10,6 +10,17 @@ namespace dataProducts {
         public:
             WaveformHeader();
 
+            WaveformHeader(unsigned int crateNumArg
+                ,unsigned int amcNumArg
+                ,unsigned int waveformCountArg
+                ,unsigned int waveformGapArg
+                ,unsigned int channelTagArg
+                ,unsigned int waveformIndexArg
+                ,unsigned int fillTypeArg
+                ,unsigned int waveformLengthArg
+                ,unsigned int DDR3AddressArg
+            );
+
             //Destructor
             ~WaveformHeader();
 

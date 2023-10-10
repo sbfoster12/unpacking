@@ -74,7 +74,8 @@ void WFD5Unpacker::Unpack(const uint64_t* words, unsigned int& wordNum) {
         */
         auto ch_header_words = GetXWords(words,wordNum,2,"bigendian");
 
-        //Set the words in the parser
+        //Set the words in the channel parser
+        //We won't write the data product yet until we get the trailer
         ChannelHeaderParser_->SetWords(ch_header_words);
 
         //Get the channel tag
@@ -82,12 +83,6 @@ void WFD5Unpacker::Unpack(const uint64_t* words, unsigned int& wordNum) {
 
         //Get the number of waveforms in this channel
         unsigned int waveform_count = ChannelHeaderParser_->WaveformCount();
-
-        //Create the data product
-        ChannelHeaderPtrCol_->push_back(ChannelHeaderParser_->NewDataProduct());
-
-        //Clean up
-        ChannelHeaderParser_->Clear();
 
         /*
             Now we loop over each waveform
@@ -107,7 +102,7 @@ void WFD5Unpacker::Unpack(const uint64_t* words, unsigned int& wordNum) {
             uint32_t waveform_length = WaveformHeaderParser_->WaveformLength();
 
             //Create the data product
-            WaveformHeaderPtrCol_->push_back(WaveformHeaderParser_->NewDataProduct());
+            WaveformHeaderPtrCol_->push_back(WaveformHeaderParser_->NewDataProduct(crateNum_,amcSlot));
 
             //Clean up
             WaveformHeaderParser_->Clear();
@@ -135,9 +130,16 @@ void WFD5Unpacker::Unpack(const uint64_t* words, unsigned int& wordNum) {
             WaveformParser_->Clear();
 
         }
-
+ 
         //channel trailer
-        wordNum+=3;
+        auto ch_trailer_words = GetXWords(words,wordNum,3,"bigendian");
+        ChannelHeaderParser_->SetTrailer(ch_trailer_words);
+
+        //Create the data product for the channel header now that we have the channel trailer
+        ChannelHeaderPtrCol_->push_back(ChannelHeaderParser_->NewDataProduct(crateNum_,amcSlot));
+
+        //Clean up the parser
+        ChannelHeaderParser_->Clear();
     }
 
     //Trailers

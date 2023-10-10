@@ -19,10 +19,12 @@ namespace parsers {
 
         //Set methods
         void SetWords(std::vector<uint64_t>& words);
+        void SetTrailer(std::vector<uint64_t>& words);
 
         //Get methods
         uint64_t GetSize() const;
         uint64_t GetWord(size_t iWord) const;
+        uint64_t GetTrailerWord(size_t iWord) const;
 
         //Clear
         void Clear();
@@ -35,6 +37,7 @@ namespace parsers {
 
     protected:
         std::vector<uint64_t> words_;
+        std::vector<uint64_t> trailerWords_;
     };
 }
 

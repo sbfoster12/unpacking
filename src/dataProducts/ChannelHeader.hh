@@ -10,6 +10,18 @@ namespace dataProducts {
         public:
             ChannelHeader();
 
+            ChannelHeader(unsigned int crateNumArg
+                ,unsigned int amcNumArg
+                ,unsigned int waveformCountArg
+                ,unsigned int waveformGapArg
+                ,unsigned int channelTagArg
+                ,unsigned int triggerNumArg
+                ,unsigned int fillTypeArg
+                ,unsigned int waveformLengthArg
+                ,unsigned int DDR3AddressArg
+                ,bool passedArg
+            );
+
             //Destructor
             ~ChannelHeader();
 

@@ -14,6 +14,26 @@ WaveformHeader::WaveformHeader()
     waveformLength(0),
     DDR3Address(0) {}
 
+WaveformHeader::WaveformHeader(unsigned int crateNumArg
+    ,unsigned int amcNumArg
+    ,unsigned int waveformCountArg
+    ,unsigned int waveformGapArg
+    ,unsigned int channelTagArg
+    ,unsigned int waveformIndexArg
+    ,unsigned int fillTypeArg
+    ,unsigned int waveformLengthArg
+    ,unsigned int DDR3AddressArg
+    ) : crateNum(crateNumArg)
+    ,amcNum(amcNumArg)
+    ,waveformCount(waveformCountArg)
+    ,waveformGap(waveformGapArg)
+    ,channelTag(channelTagArg)
+    ,waveformIndex(waveformIndexArg)
+    ,fillType(fillTypeArg)
+    ,waveformLength(waveformLengthArg)
+    ,DDR3Address(DDR3AddressArg)
+{}
+
             
 WaveformHeader::~WaveformHeader() {};
 
