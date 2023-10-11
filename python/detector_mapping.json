@@ -1,0 +1,287 @@
+{
+    "detectors": {
+        "lyso": [
+            {
+                "detectorName": "lyso",
+                "detectorNum": 0,
+                "crateNum": 0,
+                "amcSlotNum": 0,
+                "channelNum": 0
+            },
+            {
+                "detectorName": "lyso",
+                "detectorNum": 1,
+                "crateNum": 0,
+                "amcSlotNum": 0,
+                "channelNum": 1
+            },
+            {
+                "detectorName": "lyso",
+                "detectorNum": 2,
+                "crateNum": 0,
+                "amcSlotNum": 0,
+                "channelNum": 2
+            },
+            {
+                "detectorName": "lyso",
+                "detectorNum": 3,
+                "crateNum": 0,
+                "amcSlotNum": 0,
+                "channelNum": 3
+            },
+            {
+                "detectorName": "lyso",
+                "detectorNum": 4,
+                "crateNum": 0,
+                "amcSlotNum": 0,
+                "channelNum": 4
+            },
+            {
+                "detectorName": "lyso",
+                "detectorNum": 5,
+                "crateNum": 0,
+                "amcSlotNum": 1,
+                "channelNum": 0
+            },
+            {
+                "detectorName": "lyso",
+                "detectorNum": 6,
+                "crateNum": 0,
+                "amcSlotNum": 1,
+                "channelNum": 1
+            },
+            {
+                "detectorName": "lyso",
+                "detectorNum": 7,
+                "crateNum": 0,
+                "amcSlotNum": 1,
+                "channelNum": 2
+            },
+            {
+                "detectorName": "lyso",
+                "detectorNum": 8,
+                "crateNum": 0,
+                "amcSlotNum": 1,
+                "channelNum": 3
+            },
+            {
+                "detectorName": "lyso",
+                "detectorNum": 9,
+                "crateNum": 0,
+                "amcSlotNum": 1,
+                "channelNum": 4
+            }
+        ],
+        "nai": [
+            {
+                "detectorName": "nai",
+                "detectorNum": 0,
+                "crateNum": 0,
+                "amcSlotNum": 2,
+                "channelNum": 0
+            },
+            {
+                "detectorName": "nai",
+                "detectorNum": 1,
+                "crateNum": 0,
+                "amcSlotNum": 2,
+                "channelNum": 1
+            },
+            {
+                "detectorName": "nai",
+                "detectorNum": 2,
+                "crateNum": 0,
+                "amcSlotNum": 2,
+                "channelNum": 2
+            },
+            {
+                "detectorName": "nai",
+                "detectorNum": 3,
+                "crateNum": 0,
+                "amcSlotNum": 2,
+                "channelNum": 3
+            }
+        ],
+        "t0": [
+            {
+                "detectorName": "t0",
+                "detectorNum": 0,
+                "crateNum": 0,
+                "amcSlotNum": 2,
+                "channelNum": 4
+            }
+        ],
+        "hodo_x": [
+            {
+                "detectorName": "hodo_x",
+                "detectorNum": 0,
+                "crateNum": 0,
+                "amcSlotNum": 3,
+                "channelNum": 0
+            },
+            {
+                "detectorName": "hodo_x",
+                "detectorNum": 1,
+                "crateNum": 0,
+                "amcSlotNum": 3,
+                "channelNum": 1
+            },
+            {
+                "detectorName": "hodo_x",
+                "detectorNum": 2,
+                "crateNum": 0,
+                "amcSlotNum": 3,
+                "channelNum": 2
+            },
+            {
+                "detectorName": "hodo_x",
+                "detectorNum": 3,
+                "crateNum": 0,
+                "amcSlotNum": 3,
+                "channelNum": 3
+            },
+            {
+                "detectorName": "hodo_x",
+                "detectorNum": 4,
+                "crateNum": 0,
+                "amcSlotNum": 3,
+                "channelNum": 4
+            },
+            {
+                "detectorName": "hodo_x",
+                "detectorNum": 5,
+                "crateNum": 0,
+                "amcSlotNum": 4,
+                "channelNum": 0
+            },
+            {
+                "detectorName": "hodo_x",
+                "detectorNum": 6,
+                "crateNum": 0,
+                "amcSlotNum": 4,
+                "channelNum": 1
+            },
+            {
+                "detectorName": "hodo_x",
+                "detectorNum": 7,
+                "crateNum": 0,
+                "amcSlotNum": 4,
+                "channelNum": 2
+            },
+            {
+                "detectorName": "hodo_x",
+                "detectorNum": 8,
+                "crateNum": 0,
+                "amcSlotNum": 4,
+                "channelNum": 3
+            },
+            {
+                "detectorName": "hodo_x",
+                "detectorNum": 9,
+                "crateNum": 0,
+                "amcSlotNum": 4,
+                "channelNum": 4
+            },
+            {
+                "detectorName": "hodo_x",
+                "detectorNum": 10,
+                "crateNum": 0,
+                "amcSlotNum": 5,
+                "channelNum": 0
+            },
+            {
+                "detectorName": "hodo_x",
+                "detectorNum": 11,
+                "crateNum": 0,
+                "amcSlotNum": 5,
+                "channelNum": 1
+            }
+        ],
+        "hodo_y": [
+            {
+                "detectorName": "hodo_y",
+                "detectorNum": 0,
+                "crateNum": 0,
+                "amcSlotNum": 5,
+                "channelNum": 2
+            },
+            {
+                "detectorName": "hodo_y",
+                "detectorNum": 1,
+                "crateNum": 0,
+                "amcSlotNum": 5,
+                "channelNum": 3
+            },
+            {
+                "detectorName": "hodo_y",
+                "detectorNum": 2,
+                "crateNum": 0,
+                "amcSlotNum": 5,
+                "channelNum": 4
+            },
+            {
+                "detectorName": "hodo_y",
+                "detectorNum": 3,
+                "crateNum": 0,
+                "amcSlotNum": 6,
+                "channelNum": 0
+            },
+            {
+                "detectorName": "hodo_y",
+                "detectorNum": 4,
+                "crateNum": 0,
+                "amcSlotNum": 6,
+                "channelNum": 1
+            },
+            {
+                "detectorName": "hodo_y",
+                "detectorNum": 5,
+                "crateNum": 0,
+                "amcSlotNum": 6,
+                "channelNum": 2
+            },
+            {
+                "detectorName": "hodo_y",
+                "detectorNum": 6,
+                "crateNum": 0,
+                "amcSlotNum": 6,
+                "channelNum": 3
+            },
+            {
+                "detectorName": "hodo_y",
+                "detectorNum": 7,
+                "crateNum": 0,
+                "amcSlotNum": 6,
+                "channelNum": 4
+            },
+            {
+                "detectorName": "hodo_y",
+                "detectorNum": 8,
+                "crateNum": 0,
+                "amcSlotNum": 7,
+                "channelNum": 0
+            },
+            {
+                "detectorName": "hodo_y",
+                "detectorNum": 9,
+                "crateNum": 0,
+                "amcSlotNum": 7,
+                "channelNum": 1
+            },
+            {
+                "detectorName": "hodo_y",
+                "detectorNum": 10,
+                "crateNum": 0,
+                "amcSlotNum": 7,
+                "channelNum": 2
+            },
+            {
+                "detectorName": "hodo_y",
+                "detectorNum": 11,
+                "crateNum": 0,
+                "amcSlotNum": 7,
+                "channelNum": 3
+            }
+        ]
+    }
+}

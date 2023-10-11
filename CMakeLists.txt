@@ -6,6 +6,8 @@ include("${ROOT_DIR}/RootMacros.cmake")
 
 find_package(ZLIB REQUIRED)
 
+find_package(Boost 1.70 REQUIRED COMPONENTS system filesystem)
+
 cmake_minimum_required(VERSION 3.0)
 set(CMAKE_CXX_STANDARD 17)
 
@@ -22,6 +24,7 @@ file(MAKE_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 add_subdirectory(external/midas)
 add_subdirectory(src/dataProducts)
 add_subdirectory(src/unpackers)
+add_subdirectory(src/serializer)
 
 #These are the data products for which we make root dictionaries
 set(DataProducts 
@@ -37,16 +40,18 @@ set(DataProducts
 add_executable(pioneer_unpacker src/main.cc)
 
 # Enable debugging symbols
-# target_compile_options(pioneer_unpacker PRIVATE -g)
+target_compile_options(pioneer_unpacker PRIVATE -g)
 
 #link libraries
 target_link_libraries(pioneer_unpacker
     PRIVATE 
         unpackers
+        serializer
         dataProducts
         midas
         ${ZLIB_LIBRARIES}
         ${ROOT_LIBRARIES}
+        ${Boost_LIBRARIES}
 )
 
 #link include directories
@@ -54,6 +59,7 @@ target_include_directories(pioneer_unpacker
     PRIVATE
         ${ZLIB_INCLUDE_DIRS}
         ${ROOT_INCLUDE_DIRS}
+        ${Boost_INCLUDE_DIRS}
 )
 
 root_generate_dictionary(DataProductDictionary
@@ -73,6 +79,7 @@ add_custom_command(
 
 # Install the libraries
 install(TARGETS unpackers
+                serializer
                 dataProducts
                 midas 
         LIBRARY DESTINATION ${CMAKE_SOURCE_DIR}/lib
