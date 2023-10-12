@@ -18,12 +18,14 @@ namespace unpackers {
         
     public:
         
-        //Constructor
-        Serializer(std::string inputFile);
+        //Constructors
+        Serializer();
+        Serializer(std::string inputFile, int run, int subRun, int event);
 
         //Destructor
         ~Serializer();
 
+        //Method to load the channel mapping
         void LoadChannelMapping();
 
         void SetRun(int run);

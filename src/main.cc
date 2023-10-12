@@ -41,10 +41,10 @@ int main(int argc, char* argv[]) {
 
 
     // Set up the serializer for packaging up the event
-    auto serializer = std::make_unique<unpackers::Serializer>(detectorMappingFile);
-    serializer->SetRun(0);
-    serializer->SetSubRun(0);
-    serializer->SetEvent(0);
+    auto serializer = std::make_unique<unpackers::Serializer>(detectorMappingFile,0,0,0);
+    // serializer->SetRun(0);
+    // serializer->SetSubRun(0);
+    // serializer->SetEvent(0);
 
     // Set up an event unpacker object
     // This object contains the methods for

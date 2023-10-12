@@ -2,7 +2,14 @@
 
 using namespace unpackers;
 
-Serializer::Serializer(std::string inputFile) : inputFile_(inputFile) {
+Serializer::Serializer() {}
+
+Serializer::Serializer(std::string inputFile, int run, int subRun, int event) 
+    : inputFile_(inputFile)
+    ,run_(run)
+    ,subRun_(subRun)
+    ,event_(event)
+{
     this->LoadChannelMapping();
 }
 
@@ -29,6 +36,12 @@ std::string Serializer::GetString() const {
 
 void Serializer::LoadChannelMapping() {
     boost::property_tree::ptree pt;
+
+    if (!std::filesystem::exists(inputFile_)) {
+        std::cerr << "Channel mapping file doesn't exist\n"
+        << "File path = " << inputFile_ << "\n";
+        exit(1);
+    }
 
     try {
         boost::property_tree::read_json(inputFile_, pt);

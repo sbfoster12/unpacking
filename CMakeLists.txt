@@ -6,6 +6,11 @@ include("${ROOT_DIR}/RootMacros.cmake")
 
 find_package(ZLIB REQUIRED)
 
+# Check if the BOOST_1_70_0_ROOT environment variable is defined
+if(DEFINED ENV{BOOST_1_70_0_ROOT})
+    # Append the BOOST_1_70_0_ROOT to CMAKE_PREFIX_PATH
+    list(APPEND CMAKE_PREFIX_PATH "$ENV{BOOST_1_70_0_ROOT}")
+endif()
 find_package(Boost 1.70 REQUIRED COMPONENTS system filesystem)
 
 cmake_minimum_required(VERSION 3.0)
