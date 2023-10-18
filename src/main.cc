@@ -9,6 +9,7 @@ access the unpacked data
 //Standard
 #include <iostream>
 #include <memory>
+#include <fstream>
 
 //ROOT
 #include <TFile.h>
@@ -23,6 +24,14 @@ access the unpacked data
 #include "serializer/Serializer.hh"
 
 int main(int argc, char* argv[]) {
+
+    TFile* outfile = new TFile("unpacked.root","RECREATE");
+    TTree* tree = new TTree("tree","tree");
+    dataProducts::WaveformCollection waveforms;
+    tree->Branch("waveforms",&waveforms);
+
+    std::ofstream unpackedFile;
+    unpackedFile.open ("unpacked_data.txt");
 
     // We need three arguments (program, file name, verbosity) detector mapping is optional
     if (argc < 3) {
@@ -110,13 +119,19 @@ int main(int argc, char* argv[]) {
             // }
 
             // We can also get particular collections (this makes a copy)
-            auto waveformCollection = basicEventUnpacker->GetCollection<dataProducts::Waveform>("WaveformCollection");
+            waveforms = basicEventUnpacker->GetCollection<dataProducts::Waveform>("WaveformCollection");
+
+            // TBufferJSON serializer;
+            // TString json = serializer.ToJSON(&waveformCollection,3);
 
             //Serialize
-            serializer->SetWaveforms(waveformCollection);
-            std::cout <<serializer->GetString() << std::endl;
+            //serializer->SetWaveforms(waveformCollection);
+            //std::cout <<serializer->GetString() << std::endl;
+            //unpackedFile << json.Data() << "\n";
 
         }
+
+        tree->Fill();
 
         //clean up
         delete thisEvent;
@@ -125,6 +140,11 @@ int main(int argc, char* argv[]) {
     //clean up
     delete basicEventUnpacker;
     delete mReader;
+
+    tree->Write();
+    outfile->Close();
+
+    unpackedFile.close();
 
     return 0;
 }
